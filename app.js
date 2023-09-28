@@ -7,14 +7,14 @@ var item2 = "";
 var item3 = "";
 var styles = ["SMB", "SMB3", "SMW", "NSMB", "3DW"];
 var themes = ["Ground", "Underground", "Underwater", "Desert", "Snow", "Sky", "Forest", "Ghost House", "Airship", "Castle"];
-var common = ["Banzai Bills", "Bloopers", "Bob-ombs", "Boos", "Boom Boom", "Bowser", "Bullet Bills", "Buzzy Beetles", "Chain Chomps", "Cheep Cheeps", "Dry Bones", "Pirahna Plants", "Fish Bones", "Goombas", "Hammer Bros", "Koopa Troopas", "Lakitu", "Lava Bubbles", "Magikoopas", "Monty Moles", "Munchers", "Sledge Bros", "Spike Tops", "Spinies", "Stretches", "Thwomps", "Twisters", "Wiggler", "Precision Platforming"];
-var exclusives_not_tdw = ["Bowser Jr.", "On/Off blocks", "Rocky Wrenches"];
+var common = ["Banzai Bills", "Bloopers", "Bob-ombs", "Boos", "On/Off blocks" "Boom Boom", "Bowser", "Bullet Bills", "Buzzy Beetles", "Chain Chomps", "Cheep Cheeps", "Dry Bones", "Pirahna Plants", "Fish Bones", "Goombas", "Hammer Bros", "Koopa Troopas", "Lakitu", "Lava Bubbles", "Magikoopas", "Monty Moles", "Munchers", "Sledge Bros", "Spike Tops", "Spinies", "Stretches", "Thwomps", "Twisters", "Wiggler", "10-coinz"];
+var exclusives_not_tdw = ["Bowser Jr.", "Rocky Wrenches"];
 var exclusives_day_ground = ["Poisonous Mushrooms"];
 var exclusives_day = ["the Angry Sun"];
 var exclusives_night = ["the Moon"];
 var exclusives_tdw = ["Ant Troopers", "Bullies", "Cat Banzai Bills", "Cat Bullet Bills", "Charvaargh", "Fire Bros", "Meowser", "Peepas", "Piranha Creepers", "Pom Pom", "Porcupuffer", "Skipsqueaks", "Stingbies", "Koopa Cars", "clear pipes", "trees"];
 var twists = ["make it vertical", "add a boss battle", "design a puzzle", "use a sub-world", "make it a speedrun", "add custom music", "make it non-linear", "add a clear condition", "don't allow jumping", "have a true ending", "focus on a powerup"];
-var twists_movement = ["require spin-jumps"];
+var twists_movement = ["require spin-jumps", "troll the player"];
 
 function reset() {
   if (!$('#styleLock').prop('checked')) style = null;
@@ -80,16 +80,13 @@ function genAll() {
     if (item1 == "the Angry Sun" || item2 == "the Angry Sun" || item3 == "the Angry Sun") {
       day = true;
     }
-    if (style == "3DW") {
-      day = true;
-    }
   }
   /* Enemies/Gimmicks */
   if (!$('#enemiesLock').prop('checked')) {
     var list = common;
     if(style == "3DW") list = list.concat(exclusives_tdw);
     else list = list.concat(exclusives_not_tdw);
-    if(theme == "Ground" && !day) list = list.concat(exclusives_day_ground);
+    if(theme == "Ground" && day = false) list = list.concat(exclusives_day_ground);
     if(day && style != "3DW") list = list.concat(exclusives_day);
     else if(style != "3DW") list = list.concat(exclusives_night);
 
